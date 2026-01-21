@@ -33,11 +33,11 @@ class AddUserFilter implements MiddlewareInterface
         $params = $request->getQueryParams();
 
         if ($author = Arr::pull($params, 'author')) {
-            $request = $request->withQueryParams(
-                array_merge($params, [
-                    'filter' => ['author' => $author]
-                ])
-            );
+            $params['filter'] = array_merge($params['filter'] ?? [], [
+                'author' => $author,
+            ]);
+
+            $request = $request->withQueryParams($params);
 
             return $handler->handle($request);
         }
