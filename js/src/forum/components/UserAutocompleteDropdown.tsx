@@ -164,7 +164,7 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
     }
 
     if (old !== params.author) {
-      m.route.set(app.route(app.current.get('routeName'), { ...m.route.param(), ...params }));
+      m.route.set(app.route(app.current.get('routeName'), { ...params }));
     }
   }
 
