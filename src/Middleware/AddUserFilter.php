@@ -37,7 +37,7 @@ class AddUserFilter implements MiddlewareInterface
                 'author' => $author,
             ]);
 
-            if (isset($params['q']) && $params['q'] !== '') {
+            if (!empty($params['q'])) {
                 $params['q'] = trim($params['q']) . ' author:' . $author;
             }
 
